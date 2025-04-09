@@ -1,8 +1,11 @@
-<script>
+<script lang="jsx">
 import dayjs from 'dayjs'
 import customParseFormat from 'dayjs/plugin/customParseFormat'
+import { version } from "vue";
 
 dayjs.extend(customParseFormat)
+
+const isVue3 = version?.startsWith('3') // 判断vue版本
 
 export default {
   name: 'Calendar',
@@ -70,7 +73,9 @@ export default {
           .format(this.dateFormat),
         expire: true,
       }
-      vnodes.unshift(<div class="date-item expire">{this.$scopedSlots.dateCell ? this.$scopedSlots.dateCell(props) : this.daysInPrevMonth - i}</div>)
+      isVue3
+      ? vnodes.unshift(<div class="date-item expire">{this.$slots.dateCell ? this.$slots.dateCell(props) : this.daysInPrevMonth - i}</div>)
+      : vnodes.unshift(<div class="date-item expire">{this.$scopedSlots.dateCell ? this.$scopedSlots.dateCell(props) : this.daysInPrevMonth - i}</div>)
     })
     this.forWith(this.daysInMonth, (i) => {
       const props = {
@@ -79,7 +84,9 @@ export default {
           .add(i, 'day')
           .format(this.dateFormat),
       }
-      vnodes.push(<div class="date-item">{this.$scopedSlots.dateCell ? this.$scopedSlots.dateCell(props) : i + 1}</div>)
+      isVue3
+      ? vnodes.push(<div class="date-item">{this.$slots.dateCell ? this.$slots.dateCell(props) : i + 1}</div>)
+      : vnodes.push(<div class="date-item">{this.$scopedSlots.dateCell ? this.$scopedSlots.dateCell(props) : i + 1}</div>)
     })
     this.forWith(this.paddingTailDays, (i) => {
       const props = {
@@ -89,10 +96,13 @@ export default {
           .format(this.dateFormat),
         invalid: true,
       }
-      vnodes.push(<div class="date-item invalid">{this.$scopedSlots.dateCell ? this.$scopedSlots.dateCell(props) : i + 1}</div>)
+      isVue3
+      ? vnodes.push(<div class="date-item invalid">{this.$slots.dateCell ? this.$slots.dateCell(props) : i + 1}</div>)
+      : vnodes.push(<div class="date-item invalid">{this.$scopedSlots.dateCell ? this.$scopedSlots.dateCell(props) : i + 1}</div>)
     })
     return (
       <div class="calendar">
+      {isVue3}
         <table class="table-head">
           <thead>
             <tr>

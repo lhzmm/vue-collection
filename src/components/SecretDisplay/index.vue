@@ -1,4 +1,8 @@
-<script>
+<script lang="jsx">
+import { version } from "vue";
+
+const isVue3 = version?.startsWith('3') // 判断vue版本
+
 export default {
   props: {
     needDecrypt: {
@@ -20,10 +24,13 @@ export default {
     toggleDisplay() {
       this.isDecode = !this.isDecode
     },
+    getText(vnodes) {
+      return (vnodes[0]?.text || vnodes[0]?.children)?.trim()
+    },
     decrypt(vnodes) {
       let content
       try {
-        content = vnodes[0].text.trim()
+        content = this.getText(vnodes)
       } catch {
         /*  */
       }
@@ -48,7 +55,7 @@ export default {
         content = plaintextOrVnodes
       } else {
         try {
-          content = plaintextOrVnodes[0].text.trim()
+          content = this.getText(plaintextOrVnodes)
         } catch {
           /*  */
         }
@@ -92,7 +99,7 @@ export default {
         title = plaintextOrVnodes
       } else {
         try {
-          title = plaintextOrVnodes[0].text
+          title = this.getText(plaintextOrVnodes)
         } catch {
           /*  */
         }
@@ -104,7 +111,7 @@ export default {
   render() {
     const { title, vnode } = this.createContent()
 
-    if (this.$scopedSlots && this.$scopedSlots.custom) { // vue2
+    if (!isVue3 && this.$scopedSlots && this.$scopedSlots.custom) { // vue2
       return <span onClick={this.toggleDisplay}>{this.$scopedSlots.custom({ value: title })}</span>
     }
     if (typeof this.$slots.custom === 'function') { // vue3
