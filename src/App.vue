@@ -12,4 +12,9 @@ html,body,#app{
   margin:0;
   font-size: 14px;
 }
+.over-flow{
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
 </style>

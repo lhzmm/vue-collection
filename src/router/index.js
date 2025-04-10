@@ -16,6 +16,7 @@ const router = createRouter({
       children: [
         { path: 'calendar', component: () => import('@/views/Calendar/index.vue')},
         { path: 'loop', component: () => import('@/views/Loop/index.vue')},
+        { path: 'table', component: () => import('@/views/Table/index.vue')},
       ]
     }
   ]

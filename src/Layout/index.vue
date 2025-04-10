@@ -26,6 +26,7 @@ const route = useRoute()
 const categories = ref([
   { path: '/calendar', label: '日历' },
   { path: '/loop', label: 'Loop方法' },
+  { path: '/table', label: 'table表格' },
 ])
 
 function handleClick(item) {
