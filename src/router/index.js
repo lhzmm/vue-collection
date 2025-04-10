@@ -12,15 +12,14 @@ const router = createRouter({
     {
       path: '/',
       component: Layout,
-      redirect: () => ({ path: '/index' }),
+      redirect: () => ({ path: '/calendar' }),
       children: [
-        { path: 'index', component: () => import('@/views/index.vue')},
-        { path: 'index1', component: () => import('@/views/index1.vue')},
+        { path: 'calendar', component: () => import('@/views/Calendar/index.vue')},
+        { path: 'loop', component: () => import('@/views/Loop/index.vue')},
       ]
     }
   ]
 })
-console.log(router, 9988)
 router.beforeEach(async (to, from, next) => {
   if (!(await auth())) {
     return { path: '/403' }
