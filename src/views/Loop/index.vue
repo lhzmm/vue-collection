@@ -13,7 +13,7 @@
 
 <script setup>
 import { ref } from 'vue'
-import Loop from '@lhzmm/tools/src/loop'
+import {Loop} from '@lhzmm/tools'
 
 let timer = null
 const data = ref([])
