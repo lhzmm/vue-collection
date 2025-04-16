@@ -1,8 +1,8 @@
 <template>
   <div class="loop">
     <div class="btns">
-      <div class="start" @click="start">循环开始</div>
-      <div class="end" @click="end">循环结束</div>
+      <div class="start" @click="init">初始化</div>
+      <div class="end" @click="pause">循环{{play ? '暂停' : '开始'}}</div>
       <div class="reset" @click="reset">循环重置</div>
     </div>
     <div class="data">
@@ -17,6 +17,7 @@ import {Loop} from '@lhzmm/tools'
 
 let timer = null
 const data = ref([])
+const play = ref(true)
 
 function addData() {
   const index = data.value.length
@@ -26,13 +27,22 @@ function addData() {
     timer?.stop()
   }
 }
-
-function start() {
-  timer?.stop()
-  timer = new Loop(addData, { interval: 2 * 1000, leading: true })
+function init() {
+  if (timer) {
+    data.value = []
+    timer.start()
+  } else {
+    timer = new Loop(addData, { interval: 2 * 1000, leading: true })
+  }
 }
-function end() {
-  timer?.stop()
+function pause() {
+  if (!timer) return
+  if (play.value) {
+    timer.stop()
+  } else {
+    timer.start()
+  }
+  play.value = !play.value
 }
 function reset() {
   data.value = []

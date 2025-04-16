@@ -1,5 +1,12 @@
 <script setup>
 import { RouterView } from 'vue-router'
+
+// 测试ajax调用
+// import { createAjax } from '@/utils/ajax'
+
+// createAjax('/api/sso/v1/ticket')({}).then(res => {
+//   console.log(res)
+// })
 </script>
 
 <template>
