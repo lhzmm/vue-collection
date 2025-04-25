@@ -1,0 +1,60 @@
+@font-face {
+  font-family: 'icon';
+  src:  url('fonts/icon.eot?g2xedy');
+  src:  url('fonts/icon.eot?g2xedy#iefix') format('embedded-opentype'),
+    url('fonts/icon.ttf?g2xedy') format('truetype'),
+    url('fonts/icon.woff?g2xedy') format('woff'),
+    url('fonts/icon.svg?g2xedy#icon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-content-btn-quxiao:before {
+  content: "\e901";
+}
+.icon-content-btn-bianji1:before {
+  content: "\e903";
+}
+.icon-content-btn-chongzhi:before {
+  content: "\e906";
+}
+.icon-content-btn-daochu:before {
+  content: "\e907";
+}
+.icon-content-btn-piliangdaoru:before {
+  content: "\e908";
+}
+.icon-content-icon-shibai:before {
+  content: "\e929";
+}
+.icon-content-icon-xuanzhong:before {
+  content: "\e942";
+}
+.icon-content-btn-tianjia:before {
+  content: "\e946";
+}
+.icon-content-btn-shanchu:before {
+  content: "\e947";
+}
+.icon-content-btn-jiaoyingfankui:before {
+  content: "\e948";
+}
+.icon-content-btn-fullscreen:before {
+  content: "\e953";
+}

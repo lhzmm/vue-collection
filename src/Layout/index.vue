@@ -27,6 +27,7 @@ const categories = ref([
   { path: '/calendar', label: '日历' },
   { path: '/loop', label: 'Loop方法' },
   { path: '/table', label: 'table表格' },
+  { path: '/upload', label: '图片上传' },
 ])
 
 function handleClick(item) {
